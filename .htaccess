@@ -1,0 +1,19 @@
+DirectoryIndex index.php
+
+<files ~ "^.*\.([Hh][Tt][Aa])">
+order allow,deny
+deny from all
+satisfy all
+</files>
+
+ErrorDocument 400 #
+ErrorDocument 401 #
+ErrorDocument 403 #
+ErrorDocument 404 #
+ErrorDocument 500 #
+ErrorDocument 503 #
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*[^/]) index.php?p=$1 [QSA,L]
